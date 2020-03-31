@@ -20,6 +20,7 @@ jobs:
 
     - name: list vendor/bundle directory
       run: find vendor/bundle
+      continue-on-error: true
 
     - name: bundle install
       run: |
@@ -28,4 +29,5 @@ jobs:
 
     - name: list vendor/bundle directory
       run: find vendor/bundle
+      continue-on-error: true
 
