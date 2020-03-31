@@ -26,3 +26,7 @@ jobs:
         gem install bundle
         bundle update --bundler
         bundle install --jobs 4 --retry 3 --path 'vendor/bundle'
+
+    - name: list vendor/bundle directory
+      run: find vendor/bundle
+
