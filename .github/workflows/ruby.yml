@@ -1,0 +1,17 @@
+on: [push, pull_request]
+name: tests
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+    - name: bundle install
+      run: |
+        gem install bundle
+        bundle update --bundler
+        bundle install --jobs 4 --retry 3 --path 'vendor/bundle'
