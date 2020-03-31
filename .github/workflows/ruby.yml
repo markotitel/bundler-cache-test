@@ -18,6 +18,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gems-
 
+    - name: list vendor/bundle directory
+      run: find vendor/bundle
+
     - name: bundle install
       run: |
         gem install bundle
