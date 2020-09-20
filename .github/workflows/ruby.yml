@@ -1,7 +1,4 @@
-on:
-  push:
-    tags:
-      - '*'
+on: [push, pull_request]
 name: tests
 
 jobs:
@@ -16,20 +13,20 @@ jobs:
 
     - uses: actions/cache@v1
       with:
-        path: vendor/cache
+        path: vendor/bundle
         key: ${{ runner.os }}-gems2-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems2-
 
     - name: list vendor/bundle directory
-      run: find vendor/cache
+      run: find vendor/bundle
       continue-on-error: true
 
     - name: bundle install
       run: |
+        bundle config path vendor/bundle
         bundle check || bundle install --jobs 4 --retry 3
 
     - name: list vendor/bundle directory
-      run: find vendor/cache
+      run: find vendor/bundle
       continue-on-error: true
-
