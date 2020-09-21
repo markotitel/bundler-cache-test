@@ -16,8 +16,8 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: gems2-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: gems2-
+        key: gems
+        restore-keys: gems
 
     - name: list vendor/bundle directory
       run: find vendor/bundle
